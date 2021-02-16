@@ -5,7 +5,7 @@
 Bikeshare data exploration using Python
 
 ### Description
-Describe what your project is about and what it does
+This project analyze the bikeshare data from three major U.S. cities - Chicago, Washington, and New York City - to display information such as most popular days or most common stations.
 
 ### Files used
 Include the files used
