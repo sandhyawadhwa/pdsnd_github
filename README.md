@@ -14,6 +14,9 @@ new_york_city.csv - Dataset containing all bikeshare information for the city of
 
 washington.csv - Dataset containing all bikeshare information for the city of Washington provided by Udacity.
 
+bikeshare.py - The code developed takes in raw input to create an interactive experience in the terminal that answers questions about the dataset.
+
 ### Credits
 Pandas docs - pandas documentation was helpful in understanding the implemention of pandas methods used in this project.
+
 Udacity - Udacity's Data Analyst Nanodegree program and their instructors were extremely helpful while I was pursuing this project.
