@@ -7,7 +7,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'washington': 'washington.csv' }
 
 def get_filters():
-    
+
     """
     Asks user to specify a city, month, and day to analyze.
 
@@ -19,24 +19,21 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     # user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
 
-    while True:
-      city = input("would you like to explore any of these cities: chicago, new york city or washington.")
-      city = city.lower()
-      if city in ['chicago', 'new york city', 'washington']:
-         break
-      else:
-         print("Please enter a valid city name.")
-        
+    city = input("Please enter a city name: ").lower()
+
+    while city not in ['chicago', 'new york city', 'washington']:
+        city = input("City name is invalid! Please enter another name: ").lower()
+
     # user input for month (all, january, february, ... , june)
-    while True:    
+    while True:
         month = input("Do you want details of a particular month? If yes,then type month name from first six months of the year or type 'all'")
         month = month.lower()
         if month in ['january', 'february', 'march', 'april', 'may', 'june', 'all']:
             break
         else:
-            
+
             print("Please enter a valid month name.")
-            
+
     # user input for day of week (all, monday, tuesday, ... sunday)
     while True:
         day = input("Do you want details of a particular day? If yes,then type name of the day or type 'all'")
@@ -61,21 +58,21 @@ def load_data(city, month, day):
     """
     # load data file into a dataframe
     df = pd.read_csv(CITY_DATA[city])
-    
+
     # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-    
+
     # extract month and day of week from Start Time to create new columns
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
-    
+
     # filter by month if applicable
     if month != 'all':
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
         df = df[df['month'] == month]
-        
-    # filter by day of week if applicable    
+
+    # filter by day of week if applicable
     if day != 'all':
         df = df[df['day_of_week'] == day.title()]
     return df
@@ -93,7 +90,7 @@ def time_stats(df):
 
     # the most common day of week
     print("The most common day of week  is ", df['day_of_week'].mode()[0], "\n")
-    
+
 
 
     # the most common start hour
@@ -142,7 +139,7 @@ def trip_duration_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
 
 def user_stats(df, city):
     """Displays statistics on bikeshare users."""
@@ -164,8 +161,8 @@ def user_stats(df, city):
         print("The earliest year of birth is ", eyob, "\n")
         print("The most recent year of birth is ", mryob, "\n")
         print("The most common year of birth is ", mcyob, "\n")
-        
-    
+
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
