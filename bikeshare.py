@@ -19,23 +19,23 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     # user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
 
-    while True:
-      city = input("would you like to explore any of these cities: chicago, new york city or washington.")
-      city = city.lower()
-      if city in ['chicago', 'new york city', 'washington']:
-         break
-      else:
-         print("Please enter a valid city name.")
+
+    city = input("Please enter a city name: ").lower()
+
+    while city not in ['chicago', 'new york city', 'washington']:
+        city = input("City name is invalid! Please enter another name: ").lower()
 
     # user input for month (all, january, february, ... , june)
-    while True:
-        month = input("Do you want details of a particular month? If yes,then type month name from first six months of the year or type 'all'")
-        month = month.lower()
-        if month in ['january', 'february', 'march', 'april', 'may', 'june', 'all']:
-            break
-        else:
+    MONTH_DATA = {'january': 1, 'february': 2, 'march': 3, 'april': 4, 'may': 5, 'june': 6, 'all': 7}
+    month = ''
+    while month not in MONTH_DATA.keys():
+        print("\nPlease enter the month, between January to June:")
 
-            print("Please enter a valid month name.")
+        print("\n(You can also view data for all months,for that please type 'all'.)")
+        month = input().lower()
+
+        if month not in MONTH_DATA.keys():
+            print("\nInvalid input. Please try again .")
 
     # user input for day of week (all, monday, tuesday, ... sunday)
     while True:
@@ -93,6 +93,12 @@ def time_stats(df):
 
     # please enter the most common day of week
     print("The most common day of week  is ", df['day_of_week'].mode()[0], "\n")
+<<<<<<< HEAD
+||||||| fe54625
+
+=======
+
+>>>>>>> refactoring
 
 
 
